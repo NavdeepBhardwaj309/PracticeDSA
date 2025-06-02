@@ -17,6 +17,7 @@ namespace myprogressapp1
         InsertionSort,
         QuickSort,
         HeapSort,
+        BucketSort,
     }
     enum LinkedListEnum
     {

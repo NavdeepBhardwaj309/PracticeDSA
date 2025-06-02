@@ -40,6 +40,8 @@ namespace myprogressapp1.Factory
                     return _serviceProvider.GetService<QuickSort>();
                 case "HeapSort":
                     return _serviceProvider.GetService<HeapSort>();
+                case "BucketSort":
+                    return _serviceProvider.GetService<BucketSort>();
                 default:
                     throw new ArgumentException("Invalid program name");
             }

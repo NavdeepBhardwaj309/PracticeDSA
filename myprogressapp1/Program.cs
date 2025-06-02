@@ -49,12 +49,13 @@ namespace myprogressapp1
                .AddSingleton<InsertionSort>()
                .AddSingleton<QuickSort>()
                .AddSingleton<HeapSort>()
+               .AddSingleton<BucketSort>()
                .AddSingleton<ProgramFactory>()
                 .BuildServiceProvider();
            
         
             var program = serviceProvider.GetService<ProgramFactory>();
-            AlgoEnum algo = AlgoEnum.HeapSort;
+            AlgoEnum algo = AlgoEnum.BucketSort;
             IProgramInterface prog = program.ExecuteProgram(algo.ToString());
 
             prog.ExecuteProgram();
