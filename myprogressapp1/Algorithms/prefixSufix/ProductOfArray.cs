@@ -5,7 +5,7 @@
 // [24,12,8,6]
 
 int[] arr={1,2,3,4};
-
+//T-O(N) S-O(1)
 int[] ProductOfArray(int[] arr)
 {
     int [] result=new int[arr.Length] ;
