@@ -3,18 +3,22 @@
   // T-O(N/2) S-O(1)
  string reverseString(string str){
 
-    int i=0;
-   int j=str.Length-1;
-   while(i<j){
+    char[] chars = str.ToCharArray();
 
-       char temp=str[j];
-       str[j]=str[i];
-      str[i]=temp;
-      i++;
-      j--;
+    int i = 0;
+    int j = chars.Length - 1;
 
+    while (i < j)
+    {
+        char temp = chars[j];
+        chars[j] = chars[i];
+        chars[i] = temp;
+
+        i++;
+        j--;
     }
-   return str;
+
+    return new string(chars);
 }
 
 
