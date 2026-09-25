@@ -24,7 +24,7 @@ public static class ToeplitzArray
         bool isToeplitz = CheckToeplitz(matrix);
         Console.WriteLine(isToeplitz ? "Matrix is Toeplitz" : "Matrix is NOT Toeplitz");
     }
-
+//T-O(n)
     static bool CheckToeplitz(int[,] matrix)
     {
         int rows = matrix.GetLength(0);

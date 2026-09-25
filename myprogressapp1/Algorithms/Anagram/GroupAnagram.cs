@@ -1,6 +1,6 @@
 string[] arr=["eat", "tea", "tan", "ate", "nat", "bat","cab"];
-
-
+//T-o(N^2)
+//S-o(N)
 //using frquency technique
 List<List<string>> GroupAnagram(string[] arr)
 {
