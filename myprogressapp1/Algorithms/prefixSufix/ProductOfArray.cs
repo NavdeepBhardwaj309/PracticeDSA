@@ -1,7 +1,16 @@
+using myprogressapp1.Interfaces;
+
 namespace myprogressapp1.Algorithms.prefixSufix;
 
-public class ProductOfArray
+public class ProductOfArray : IProgramInterface
 {
+    public void ExecuteProgram()
+    {
+        int[] arr = { 1, 2, 3, 4 };
+        int[] result = CalculateProduct(arr);
+        Console.WriteLine(string.Join(", ", result));
+    }
+
     public int[] CalculateProduct(int[] arr)
     {
         if (arr == null || arr.Length == 0)

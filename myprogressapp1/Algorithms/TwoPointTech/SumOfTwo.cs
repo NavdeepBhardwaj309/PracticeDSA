@@ -1,11 +1,20 @@
+using myprogressapp1.Interfaces;
 using System.Diagnostics;
 
-public class SumOfTwo
+public class SumOfTwo : IProgramInterface
 {
+    public void ExecuteProgram()
+    {
+        int[] sortedArray = { 1, 2, 3, 4, 6, 8 };
+        int targetSum = 10;
+        bool doesSumExist = CheckSumExist(sortedArray, targetSum);
+        Console.WriteLine($"Does sum exist: {doesSumExist}");
+    }
+
     public SumOfTwo()
     {
-        
     }
+
     public SumOfTwo(int[] sortedArray, int targetSum)
     {
         bool doesSumExist = CheckSumExist(sortedArray, targetSum);
@@ -18,7 +27,6 @@ public class SumOfTwo
         int left = 0; int right = arr.Length - 1;
         while (left < right)
         {
-            //int mid = (right - left) / 2;
             if (arr[left] + arr[right] == sum)
             {
                 exists = true;
@@ -31,7 +39,6 @@ public class SumOfTwo
             {
                 right--;
             }
-
         }
 
         return exists;

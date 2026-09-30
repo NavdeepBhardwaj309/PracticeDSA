@@ -1,8 +1,16 @@
+using myprogressapp1.Interfaces;
+
 namespace myprogressapp1.Algorithms.Anagram;
 
-public class CheckAnagram
+public class CheckAnagram : IProgramInterface
 {
-    public static bool IsAnagram(string str1, string str2)
+    public void ExecuteProgram(){
+      string str1 = "listen";
+      string str2 = "silent";   
+      bool isAnagram = IsAnagram(str1, str2);
+      Console.WriteLine($"Are '{str1}' and '{str2}' anagrams? {isAnagram}");
+    }
+    public  bool IsAnagram(string str1, string str2)
     {
         if (string.IsNullOrEmpty(str1) || string.IsNullOrEmpty(str2))
             return str1 == str2;

@@ -1,7 +1,16 @@
+using myprogressapp1.Interfaces;
+
 namespace myprogressapp1.Algorithms.slidingWindow;
 
-public class LongestUnquieCharSubstring
+public class LongestUnquieCharSubstring : IProgramInterface
 {
+    public void ExecuteProgram()
+    {
+        string input = "pwwkew";
+        int result = LongestSubstring(input);
+        Console.WriteLine($"Longest substring length is {result}");
+    }
+
     public int LongestSubstring(string input)
     {
         if (string.IsNullOrEmpty(input))

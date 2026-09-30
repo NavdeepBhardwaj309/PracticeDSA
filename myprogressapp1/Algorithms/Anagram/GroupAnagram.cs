@@ -1,8 +1,20 @@
+using myprogressapp1.Interfaces;
 namespace myprogressapp1.Algorithms.Anagram;
 
-public static class GroupAnagram
+public  class GroupAnagram: IProgramInterface
 {
-    public static List<List<string>> GroupWords(string[] words)
+    public void ExecuteProgram(){
+        string[] words = { "eat", "tea", "tan", "ate", "nat", "bat" };
+        List<List<string>> groupedAnagrams = GroupWords(words);
+
+        Console.WriteLine("Grouped Anagrams:");
+        foreach (var group in groupedAnagrams)
+        {
+            Console.WriteLine(string.Join(", ", group));
+        }
+
+    }  
+    public  List<List<string>> GroupWords(string[] words)
     {
         List<List<string>> anagramList = new();
         Dictionary<string, List<string>> dict = new();

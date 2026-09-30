@@ -1,7 +1,16 @@
+using myprogressapp1.Interfaces;
+
 namespace myprogressapp1.Algorithms.TwoPointTech;
 
-public class Palindrome
+public class Palindrome : IProgramInterface
 {
+    public void ExecuteProgram()
+    {
+        string input = "A man, a plan, a canal Panama";
+        bool result = IsPalindromeString(input);
+        Console.WriteLine($"Palindrome: {result}");
+    }
+
     public bool IsPalindromeString(string input)
     {
         if (string.IsNullOrEmpty(input))

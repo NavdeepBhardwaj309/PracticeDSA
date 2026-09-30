@@ -1,7 +1,16 @@
+using myprogressapp1.Interfaces;
+
 namespace myprogressapp1.Algorithms.TwoPointTech;
 
-public class LeftAlignZero
+public class LeftAlignZero : IProgramInterface
 {
+    public void ExecuteProgram()
+    {
+        int[] arr = { 5, 2, 0, 0, 3, 0, 0, 4, 1, 0, 0, 0, 6 };
+        var result = LeftAlignZeros(arr);
+        Console.WriteLine(string.Join(", ", result));
+    }
+
     public int[] LeftAlignZeros(int[] arr)
     {
         if (arr == null || arr.Length == 0)

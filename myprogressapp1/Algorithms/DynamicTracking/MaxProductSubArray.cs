@@ -1,7 +1,16 @@
+using myprogressapp1.Interfaces;
+
 namespace myprogressapp1.Algorithms.DynamicTracking;
 
-public class MaxProductSubArray
+public class MaxProductSubArray : IProgramInterface
 {
+    public void ExecuteProgram()
+    {
+        int[] arr = { 2, 3, -2, 4 };
+        int result = FindMaxProduct(arr);
+        Console.WriteLine($"Max product is {result}");
+    }
+
     public int FindMaxProduct(int[] arr)
     {
         if (arr == null || arr.Length == 0)

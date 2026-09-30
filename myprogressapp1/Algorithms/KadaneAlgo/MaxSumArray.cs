@@ -1,7 +1,16 @@
+using myprogressapp1.Interfaces;
+
 namespace myprogressapp1.Algorithms.KadaneAlgo;
 
-public class MaxSumArray
+public class MaxSumArray : IProgramInterface
 {
+    public void ExecuteProgram()
+    {
+        int[] arr = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+        int result = FindMaxSubArray(arr);
+        Console.WriteLine($"Max sum is {result}");
+    }
+
     public int FindMaxSubArray(int[] arr)
     {
         if (arr == null || arr.Length == 0)

@@ -1,7 +1,16 @@
+using myprogressapp1.Interfaces;
+
 namespace myprogressapp1.Algorithms;
 
-public class LongestPrefixStr
+public class LongestPrefixStr : IProgramInterface
 {
+    public void ExecuteProgram()
+    {
+        string[] strings = { "flower", "flow", "flight" };
+        string prefix = FindLongestCommonPrefix(strings);
+        Console.WriteLine($"Longest common prefix is: {prefix}");
+    }
+
     public string FindLongestCommonPrefix(string[] strs)
     {
         if (strs == null || strs.Length == 0)

@@ -1,7 +1,20 @@
+using myprogressapp1.Interfaces;
+
 namespace myprogressapp1.Algorithms;
 
-public class SubstringCount
+public class SubstringCount : IProgramInterface
 {
+    public void ExecuteProgram()
+    {
+        string input = "abc abc a d bc";
+        int length = 2;
+        var result = GetSubstringFrequency(input, length);
+        foreach (var item in result)
+        {
+            Console.WriteLine($"Substring: {item.Key}, Count: {item.Value}");
+        }
+    }
+
     public Dictionary<string, int> GetSubstringFrequency(string input, int length)
     {
         Dictionary<string, int> dict = new();

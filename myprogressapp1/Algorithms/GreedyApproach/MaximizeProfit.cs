@@ -1,7 +1,16 @@
+using myprogressapp1.Interfaces;
+
 namespace myprogressapp1.Algorithms.GreedyApproach;
 
-public class MaximizeProfit
+public class MaximizeProfit : IProgramInterface
 {
+    public void ExecuteProgram()
+    {
+        int[] arr = { 7, 1, 5, 3, 6, 4 };
+        int result = GetMaxProfit(arr);
+        Console.WriteLine($"Max profit is {result}");
+    }
+
     public int GetMaxProfit(int[] arr)
     {
         if (arr == null || arr.Length == 0)
