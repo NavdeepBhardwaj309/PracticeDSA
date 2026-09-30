@@ -1,31 +1,38 @@
-using System;
+using myprogressapp1.Interfaces;
+namespace myprogressapp1.Algorithms;
 
-public static class ToeplitzArray
+public  class ToeplitzArray : IProgramInterface
 {
-    public static void isToeplitz()
+    public void ExecuteProgram()
     {
-        int rows = 3;
-        int cols = 4;
-        int[,] matrix = new int[rows, cols];
+     
+        // int rows = 3;
+        // int cols = 4;
+        // int[,] matrix = new int[rows, cols];
 
-        Console.WriteLine($"Enter {rows} rows, each with {cols} numbers separated by spaces:");
+        // Console.WriteLine($"Enter {rows} rows, each with {cols} numbers separated by spaces:");
 
-        // Read matrix from console
-        for (int i = 0; i < rows; i++)
+        // // Read matrix from console
+        // for (int i = 0; i < rows; i++)
+        // {
+        //     string[] parts = Console.ReadLine().Split(' ');
+        //     for (int j = 0; j < cols; j++)
+        //     {
+        //         matrix[i, j] = int.Parse(parts[j]);
+        //     }
+        // }
+        int [,] matrix = new int[,]
         {
-            string[] parts = Console.ReadLine().Split(' ');
-            for (int j = 0; j < cols; j++)
-            {
-                matrix[i, j] = int.Parse(parts[j]);
-            }
-        }
-
+            { 1, 2, 3, 4 },
+            { 5, 1, 2, 3 },
+            { 9, 5, 1, 2 }
+        };
         // Check Toeplitz
         bool isToeplitz = CheckToeplitz(matrix);
         Console.WriteLine(isToeplitz ? "Matrix is Toeplitz" : "Matrix is NOT Toeplitz");
     }
 //T-O(n)
-    static bool CheckToeplitz(int[,] matrix)
+    public bool CheckToeplitz(int[,] matrix)
     {
         int rows = matrix.GetLength(0);
         int cols = matrix.GetLength(1);

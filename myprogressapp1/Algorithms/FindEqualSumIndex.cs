@@ -1,16 +1,21 @@
-public static class FindEqualSumIndex{
+using myprogressapp1.Interfaces;
+namespace myprogressapp1.Algorithms;
 
-
-// timecomplexity =o(n)+o(n)= o(n)
-    public static void findIndex()
+public class FindEqualSumIndex:IProgramInterface
+{
+    public void ExecuteProgram()
     {
-        Console.WriteLine("Enter array elements separated by space:");
-        int[] arr = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
+       //Console.WriteLine("Enter array elements separated by space:");
+        int[] arr =  {1,4,2,3,5,6}; // Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
 
         int result = FindPivotIndex(arr);
         Console.WriteLine("Equilibrium Index: " + result);
-    }
-    public static int FindPivotIndex(int[] arr)
+    }   
+
+
+// timecomplexity =o(n)+o(n)= o(n)
+    
+    public int FindPivotIndex(int[] arr)
     {
         int totalSum = 0;
         foreach (int num in arr)
