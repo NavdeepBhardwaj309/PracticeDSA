@@ -1,26 +1,26 @@
- 
- string str="silent";
-  // T-O(N/2) S-O(1)
- string reverseString(string str){
+namespace myprogressapp1.Algorithms.TwoPointTech;
 
-    char[] chars = str.ToCharArray();
-
-    int i = 0;
-    int j = chars.Length - 1;
-
-    while (i < j)
+public class ReverseString
+{
+    public string Reverse(string input)
     {
-        char temp = chars[j];
-        chars[j] = chars[i];
-        chars[i] = temp;
+        if (string.IsNullOrEmpty(input))
+            return input;
 
-        i++;
-        j--;
+        char[] chars = input.ToCharArray();
+        int i = 0;
+        int j = chars.Length - 1;
+
+        while (i < j)
+        {
+            char temp = chars[j];
+            chars[j] = chars[i];
+            chars[i] = temp;
+
+            i++;
+            j--;
+        }
+
+        return new string(chars);
     }
-
-    return new string(chars);
 }
-
-
-var result= reverseString(str);
-Console.WriteLine("reversed string. - {0}", result);

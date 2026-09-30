@@ -1,41 +1,33 @@
-string str1="listen";
-string str2="silent";
-//check frequency of characters using dictionary
-bool CheckAnagram(string str1, string str2)
+namespace myprogressapp1.Algorithms.Anagram;
+
+public class CheckAnagram
 {
-    
-    
-    if(str1.Length!=str2.Length)
-      return false;
-
-    Dictionary<char,int>dict=new Dictionary<char, int>();
-    for(int i = 0; i < str1.Length; i++)
+    public static bool IsAnagram(string str1, string str2)
     {
-        if (dict.ContainsKey(str1[i]))
-        {
-            dict[str1[i]]++;
-        }
-        else
-        {
-            dict[str1[i]]=1;
-        }
-    }
-    for(int i = 0; i < str2.Length; i++)
-    {
-        if (!dict.ContainsKey(str2[i]))
-        {
-           return false;
-        }
-        dict[str2[i]]--;
+        if (string.IsNullOrEmpty(str1) || string.IsNullOrEmpty(str2))
+            return str1 == str2;
 
-        if(dict[str2[i]]<0)
-          return false;
-       
-    }
+        if (str1.Length != str2.Length)
+            return false;
 
-    return true;
+        Dictionary<char, int> dict = new();
+        for (int i = 0; i < str1.Length; i++)
+        {
+            dict[str1[i]] = dict.TryGetValue(str1[i], out int count) ? count + 1 : 1;
+        }
+
+        for (int i = 0; i < str2.Length; i++)
+        {
+            if (!dict.TryGetValue(str2[i], out int count))
+                return false;
+
+            count--;
+            if (count < 0)
+                return false;
+
+            dict[str2[i]] = count;
+        }
+
+        return true;
+    }
 }
-
-
-bool  result= CheckAnagram(str1,str2);
-Console.WriteLine("strings are anagram. - {0}", result);

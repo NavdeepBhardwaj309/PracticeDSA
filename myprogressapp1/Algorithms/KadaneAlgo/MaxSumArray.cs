@@ -1,20 +1,21 @@
-int [] arr={-2,1,-3,4,-1,2,1,-5,4};
+namespace myprogressapp1.Algorithms.KadaneAlgo;
 
-// use Kadane algorithm when some array elements are negative
-// T=O(n) S=O(1)
- int maxSubArray(int[] arr)
+public class MaxSumArray
 {
-    int currentSum=arr[0];
-    int maxSum=arr[0];
-    for(int i=1; i < arr.Length; i++)
+    public int FindMaxSubArray(int[] arr)
     {
-        currentSum=Math.Max(arr[i], currentSum+arr[i]);
-        maxSum=Math.Max(maxSum,currentSum);
+        if (arr == null || arr.Length == 0)
+            throw new ArgumentException("Array cannot be null or empty.", nameof(arr));
+
+        int currentSum = arr[0];
+        int maxSum = arr[0];
+
+        for (int i = 1; i < arr.Length; i++)
+        {
+            currentSum = Math.Max(arr[i], currentSum + arr[i]);
+            maxSum = Math.Max(maxSum, currentSum);
+        }
+
+        return maxSum;
     }
-
-    return maxSum;
 }
-
-
-int  result= maxSubArray(arr);
-Console.WriteLine("max sum is {0}", result);

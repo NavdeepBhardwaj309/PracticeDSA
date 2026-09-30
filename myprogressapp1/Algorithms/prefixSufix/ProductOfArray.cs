@@ -1,34 +1,27 @@
-// Input:
-// [1,2,3,4]
+namespace myprogressapp1.Algorithms.prefixSufix;
 
-// Output:
-// [24,12,8,6]
-
-int[] arr={1,2,3,4};
-//T-O(N) S-O(1)
-int[] ProductOfArray(int[] arr)
+public class ProductOfArray
 {
-    int [] result=new int[arr.Length] ;
-    result[0]=1;
-    for(int i=1;i<arr.Length; i++)
+    public int[] CalculateProduct(int[] arr)
     {
-        result[i]=result[i-1]*arr[i-1];
-    } 
-    //result={1,1,2,6}
-    int sufffix=1;
-    for(int i=arr.Length-1; i>0;i--)
-    {
-        result[i]=result[i]*sufffix;
-        sufffix*=arr[i];
+        if (arr == null || arr.Length == 0)
+            return Array.Empty<int>();
 
+        int[] result = new int[arr.Length];
+        result[0] = 1;
+
+        for (int i = 1; i < arr.Length; i++)
+        {
+            result[i] = result[i - 1] * arr[i - 1];
+        }
+
+        int suffix = 1;
+        for (int i = arr.Length - 1; i > 0; i--)
+        {
+            result[i] = result[i] * suffix;
+            suffix *= arr[i];
+        }
+
+        return result;
     }
-return result; 
-
-}
-
-int[] result=ProductOfArray(arr);
-
-foreach(var element in result)
-{
-    Console.WriteLine(element);
 }

@@ -1,24 +1,28 @@
-string str="pwwkew"; //"abcabcbb";
-//T O(N) S-O(K)
-int LongestSubstring(string str)
-{
-    Dictionary<char, int> lastSeen = new();   //p:0,w:1,//p:0,w:2,k:3,e:4// p:0,w:5,k:3,e:4
-    int left=0;   //0>2>3
-    int maxLength=0;
-    // int right=str.Length-1;
-    for(int right = 0; right < str.Length; right++)
-    {
-        if (lastSeen.ContainsKey(str[right])){
-            int previousIndex=lastSeen[str[right]]; //1>2
-            left=Math.Max(left, previousIndex+1);
-        }
-       
-            lastSeen[str[right]]=right;
-        
-        maxLength=Math.Max(maxLength, right-left+1);
-    }
-  return maxLength;
-}
+namespace myprogressapp1.Algorithms.slidingWindow;
 
-int  result= LongestSubstring(str);
-Console.WriteLine("LongestSubstring length is {0}", result);
+public class LongestUnquieCharSubstring
+{
+    public int LongestSubstring(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return 0;
+
+        Dictionary<char, int> lastSeen = new();
+        int left = 0;
+        int maxLength = 0;
+
+        for (int right = 0; right < input.Length; right++)
+        {
+            if (lastSeen.ContainsKey(input[right]))
+            {
+                int previousIndex = lastSeen[input[right]];
+                left = Math.Max(left, previousIndex + 1);
+            }
+
+            lastSeen[input[right]] = right;
+            maxLength = Math.Max(maxLength, right - left + 1);
+        }
+
+        return maxLength;
+    }
+}

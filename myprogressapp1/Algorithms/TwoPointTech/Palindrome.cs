@@ -1,26 +1,30 @@
-string str="A man, a plan, a canal Panama";
+namespace myprogressapp1.Algorithms.TwoPointTech;
 
-//T-O(N) S-O(1)
-bool IsPalindrome(string str);
+public class Palindrome
 {
-    int left=0;
-    int right=str.Length-1;
-    
-    while (left < right)
-    {   //remove space
-        while(left<right && char.IsLetterOrDigit(str[left]))
-           left++;
-        while(left<right && char.IsLetterOrDigit(str[right]))
-           right--;
+    public bool IsPalindromeString(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return true;
 
-        if(str[left]!=str[right])
-           return false;
-        left++;
-        right--;
+        int left = 0;
+        int right = input.Length - 1;
 
+        while (left < right)
+        {
+            while (left < right && !char.IsLetterOrDigit(input[left]))
+                left++;
+
+            while (left < right && !char.IsLetterOrDigit(input[right]))
+                right--;
+
+            if (char.ToLowerInvariant(input[left]) != char.ToLowerInvariant(input[right]))
+                return false;
+
+            left++;
+            right--;
+        }
+
+        return true;
     }
-    return true;
 }
-
-bool result= IsPalindrome(str);
-Console.WriteLine("strings  is Palindrome. - {0}", result);

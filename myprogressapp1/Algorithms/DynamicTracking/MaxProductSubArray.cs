@@ -1,24 +1,25 @@
-int arr={2,3,-2,4}; //{-2,3,-4}
+namespace myprogressapp1.Algorithms.DynamicTracking;
 
-
-//T-O(N) S-O(1)
-int MaxProductSaubArrary(int[] arr)
+public class MaxProductSubArray
 {
-    int maxProduct=arr[0];
-    int minProduct=arr[0];
-    int result=arr[0];
+    public int FindMaxProduct(int[] arr)
+    {
+        if (arr == null || arr.Length == 0)
+            throw new ArgumentException("Array cannot be null or empty.", nameof(arr));
 
-    for(int i = 1; i < arr.Length; i++)
-    {   
-        int a=maxProduct*arr[i];
-        int b= minProduct*arr[i];
-        maxProduct=Math.Max(arr[i],Math.Max(a,b));  //3 //24
-        minProduct=Math.Min(arr[i],Math.Min(a,b));//-6
-       result=Math.Max(result, maxProduct);
+        int maxProduct = arr[0];
+        int minProduct = arr[0];
+        int result = arr[0];
+
+        for (int i = 1; i < arr.Length; i++)
+        {
+            int a = maxProduct * arr[i];
+            int b = minProduct * arr[i];
+            maxProduct = Math.Max(arr[i], Math.Max(a, b));
+            minProduct = Math.Min(arr[i], Math.Min(a, b));
+            result = Math.Max(result, maxProduct);
+        }
+
+        return result;
     }
-   return result;
 }
-
-
-int  result= MaxProductSaubArrary(arr);
-Console.WriteLine("max Product is {0}", result);

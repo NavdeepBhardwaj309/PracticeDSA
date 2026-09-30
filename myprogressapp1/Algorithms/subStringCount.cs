@@ -1,33 +1,32 @@
-//find the count of consecutive substrings of length k
+namespace myprogressapp1.Algorithms;
 
-//string str="hello";
-string str="abc abc a d bc";
-int k=2;
-
-Dictionary<string, int> getSubstringFrequency(string str,int k)
+public class SubstringCount
 {
-    Dictionary<string,int>dict=new Dictionary<string,int>();
-    for(int i = 0; i <= str.Length - k; i++)
+    public Dictionary<string, int> GetSubstringFrequency(string input, int length)
     {
-        if(str[i]==' '|| str[i + 1] == ' ')
-        {
-            continue;
-        }
-      string substring = str.Substring(i, k);
-      if(dict.ContainsKey(substring))
-      {
-        dict[substring]++;
-      }
-      else
-      {
-        dict[substring]=1;
-      }
-    }
-    return dict;
-}
+        Dictionary<string, int> dict = new();
 
-var result =getSubstringFrequency(str,k);
-foreach(var item in result)
-{
-    Console.WriteLine("Substring: {0}, Count: {1}", item.Key, item.Value);
+        if (string.IsNullOrEmpty(input) || length <= 0 || length > input.Length)
+            return dict;
+
+        for (int i = 0; i <= input.Length - length; i++)
+        {
+            if (input[i] == ' ' || i + 1 < input.Length && input[i + 1] == ' ')
+            {
+                continue;
+            }
+
+            string substring = input.Substring(i, length);
+            if (dict.ContainsKey(substring))
+            {
+                dict[substring]++;
+            }
+            else
+            {
+                dict[substring] = 1;
+            }
+        }
+
+        return dict;
+    }
 }

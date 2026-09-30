@@ -1,30 +1,39 @@
-string[] arr=["eat", "tea", "tan", "ate", "nat", "bat","cab"];
-//T-o(N^2)
-//S-o(N)
-//using frquency technique
-List<List<string>> GroupAnagram(string[] arr)
+namespace myprogressapp1.Algorithms.Anagram;
+
+public static class GroupAnagram
 {
-      List<List<string>> anagramList=new List<List<string>>();
-      Dictionary<string,List<string>> dict=new Dictionary<string, List<string>>();
-      foreach(var word in arr)
-      {
-        int[] count=new int[26];  //number of alphabets
-        //ASCII VALUE OF LOWERCASE STARTS FROM 97
-        foreach(char c in word)
-        {
-            count[c-'a']++;  //ASCII OF Char c - a if char c='a' then 'a'-'a'=97-97=0
-        }
-        string key= string.Join('|',count); //creating key usng count array e.g for cab it will be[1,1,1,0,0,0.....]then key 1110000.....
-        if (!dict.ContainsKey(key))
-        {
-            dict[key]=new List<string>();
-        }
-        dict[key].Add(word);
-       
-      }
-     foreach(var key in dict.Keys)
+    public static List<List<string>> GroupWords(string[] words)
     {
-        anagramList.Add(dict[key]);
+        List<List<string>> anagramList = new();
+        Dictionary<string, List<string>> dict = new();
+
+        foreach (var word in words)
+        {
+            int[] count = new int[26];
+
+            foreach (char c in word)
+            {
+                if (char.IsLetter(c))
+                {
+                    char lower = char.ToLowerInvariant(c);
+                    count[lower - 'a']++;
+                }
+            }
+
+            string key = string.Join('|', count);
+            if (!dict.ContainsKey(key))
+            {
+                dict[key] = new List<string>();
+            }
+
+            dict[key].Add(word);
+        }
+
+        foreach (var key in dict.Keys)
+        {
+            anagramList.Add(dict[key]);
+        }
+
+        return anagramList;
     }
-   return anagramList; 
 }
